@@ -1,0 +1,280 @@
+/* ================================================
+   BASE.CSS — Variables, reset y estilos globales
+   Mobile First · Tusuy Ñan
+   ================================================ */
+
+/* ── VARIABLES ── */
+:root {
+  /* Fondo oscuro (paleta original) */
+  --negro:        #0D0D0D;
+  --carbon:       #141414;
+  --carbon-med:   #1C1C1C;
+  --carbon-suave: #242424;
+  --gris-oscuro:  #2E2E2E;
+
+  /* Dorado — identidad del logo */
+  --oro:          #C9A84C;
+  --oro-claro:    #DFC070;
+  --oro-suave:    #B8943E;
+  --oro-tenue:    rgba(201,168,76,0.12);
+
+  /* Acento tierra / azul criollo */
+  --tierra:       #7A3B1E;
+  --tierra-med:   #A0522D;
+  --arena:        #E8D5B0;
+  --azul-criollo: #1B2E4B;
+
+  /* Texto */
+  --texto:        #E8D5B0;
+  --texto-suave:  rgba(232,213,176,0.6);
+  --texto-fino:   rgba(232,213,176,0.35);
+
+  /* Tipografía */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Lato', 'Helvetica Neue', sans-serif;
+  --font-italic:  'IM Fell English', Georgia, serif;
+
+  /* Espaciado base */
+  --px:           1.25rem;   /* padding horizontal mobile */
+  --section-py:   4rem;      /* padding vertical secciones mobile */
+}
+
+/* ── RESET ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--negro);
+  color: var(--texto);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Grain de textura sutil */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ── TIPOGRAFÍA BASE ── */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  line-height: 1.1;
+  color: var(--texto);
+}
+
+p {
+  font-weight: 300;
+  color: var(--texto-suave);
+}
+
+/* ── ELEMENTOS COMPARTIDOS ── */
+
+/* Eyebrow label */
+.eyebrow {
+  font-size: 0.62rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--oro);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--oro);
+  flex-shrink: 0;
+}
+
+.eyebrow.center {
+  justify-content: center;
+}
+
+.eyebrow.center::before {
+  display: none;
+}
+
+/* Títulos de sección */
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 7vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--texto);
+  margin-bottom: 1rem;
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--oro);
+}
+
+.section-subtitle {
+  font-size: 0.93rem;
+  font-weight: 300;
+  color: var(--texto-suave);
+  line-height: 1.8;
+}
+
+/* Header de sección centrado */
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+/* Divisor decorativo dorado */
+.divider-oro {
+  width: 40px;
+  height: 1px;
+  background: var(--oro);
+  margin: 1.5rem auto;
+  opacity: 0.4;
+}
+
+/* Tags / etiquetas */
+.tag {
+  display: inline-block;
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.9rem;
+  border: 1px solid rgba(201,168,76,0.28);
+  color: var(--oro-suave);
+  transition: all 0.2s;
+}
+
+.tag:hover {
+  background: var(--oro-tenue);
+  border-color: var(--oro);
+  color: var(--oro);
+}
+
+/* Stats */
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--oro);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--texto-fino);
+  margin-top: 0.35rem;
+}
+
+/* ── BOTONES ── */
+.btn-oro {
+  display: inline-block;
+  background: var(--oro);
+  color: var(--negro);
+  padding: 0.9rem 2rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  border: 2px solid var(--oro);
+  transition: all 0.25s;
+  cursor: pointer;
+  text-align: center;
+  /* Área táctil mínima recomendada */
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-oro:hover {
+  background: transparent;
+  color: var(--oro);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  /*color: var(--texto-suave);*/
+  padding: 0.9rem 2rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  border: 1px solid rgba(232,213,176,0.55);
+  color: rgba(232,213,176,0.90);
+  transition: all 0.25s;
+  min-height: 48px;
+}
+
+.btn-outline:hover {
+  border-color: var(--oro);
+  color: var(--oro);
+}
+
+/* ── ANIMACIÓN FADEUP ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── SCROLL REVEAL (clase JS) ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── TABLETS ── */
+@media (min-width: 600px) {
+  :root {
+    --px: 2.5rem;
+    --section-py: 5.5rem;
+  }
+}
+
+/* ── DESKTOP ── */
+@media (min-width: 960px) {
+  :root {
+    --px: 5rem;
+    --section-py: 7rem;
+  }
+}

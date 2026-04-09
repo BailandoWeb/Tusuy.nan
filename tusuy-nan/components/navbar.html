@@ -1,0 +1,38 @@
+<!-- ================================================
+     NAVBAR.HTML — Componente de navegación
+     Incluir en todas las páginas con:
+     fetch('/components/navbar.html') + JS inject
+     o copiar directamente en cada página.
+     ================================================ -->
+
+<nav id="navbar">
+  <div class="nav-logo-wrap">
+    <a href="/index.html">
+      <img src="/img/inti.png" alt="Tusuy Ñan" class="nav-logo-img" />
+    </a>
+    <a href="/index.html">
+      <span class="nav-logo-nombre">Tusuy Ñan</span>
+      <span class="nav-logo-sub">Folklore Argentino · Madrid</span>
+    </a>
+  </div>
+
+  <!-- Hamburger -->
+  <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Overlay -->
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <!-- Menú -->
+  <ul class="nav-menu" id="navMenu" role="navigation" aria-label="Menú principal">
+    <li><a href="/index.html#nosotros">Nosotros</a></li>
+    <li><a href="/index.html#folklore">Nuestro Folklore</a></li>
+    <li><a href="/index.html#clases">Clases</a></li>
+    <li><a href="/index.html#espectaculo">Espectáculos</a></li>
+    <li><a href="/blog/index.html">Blog</a></li>
+    <li><a href="/index.html#contacto" class="nav-cta">Inscribirse</a></li>
+  </ul>
+</nav>

@@ -1,0 +1,265 @@
+/* ================================================
+   BLOG.CSS — Estilos del listado de blog
+   Mobile First · Tusuy Ñan
+   ================================================ */
+
+/* ── HERO ESPECÍFICO DEL BLOG ── */
+.blog-hero {
+  min-height: 280px;
+  background: var(--carbon);
+  position: relative;
+}
+
+/* ── IMAGEN DE FONDO ── */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  /* Blanco y negro potenciado */
+  filter: grayscale(100%) contrast(1.1) brightness(0.55);
+  /* Paralaje suave: el JS mueve esta propiedad */
+  will-change: transform;
+  transform: scale(1.08); /* margen para el movimiento */
+  transition: opacity 0.1s linear;
+}
+
+.blog-hero .subpage-hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── FILTROS DE CATEGORÍA ── */
+.blog-filtros {
+  background: var(--carbon-med);
+  border-bottom: 1px solid rgba(201,168,76,0.08);
+  position: sticky;
+  top: var(--navbar-h); /* usa la variable definida en navbar.css */
+  z-index: 50;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  /* Ocultar scrollbar visualmente */
+  scrollbar-width: none;
+}
+
+.blog-filtros::-webkit-scrollbar {
+  display: none;
+}
+
+.blog-filtros-inner {
+  display: flex;
+  gap: 0;
+  padding: 0 var(--px);
+  min-width: max-content;
+}
+
+.filtro {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--texto-suave);
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 1rem 1.2rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+  /* Área táctil generosa */
+  min-height: 50px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.filtro:hover {
+  color: var(--oro);
+}
+
+.filtro.active {
+  color: var(--oro);
+  border-bottom-color: var(--oro);
+}
+
+/* ── GRID DE CARDS ── */
+.blog-listing-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: rgba(201,168,76,0.08);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ── CARD INDIVIDUAL ── */
+.blog-post-card {
+  background: var(--carbon);
+  transition: background 0.25s;
+}
+
+.blog-post-card:hover {
+  background: var(--carbon-med);
+}
+
+.blog-card-link {
+  display: flex;
+  flex-direction: column;
+  color: inherit;
+  height: 100%;
+}
+
+/* Imagen de la card */
+.blog-card-img-wrap {
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.blog-card-img-wrap img {
+  width: 100%;
+  height: 52vw;
+  min-height: 180px;
+  max-height: 260px;
+  object-fit: cover;
+  filter: sepia(15%) brightness(0.82);
+  transition: transform 0.4s, filter 0.4s;
+  display: block;
+}
+
+.blog-post-card:hover .blog-card-img-wrap img {
+  transform: scale(1.04);
+  filter: sepia(10%) brightness(0.7);
+}
+
+/* Badge de categoría */
+.blog-card-cat {
+  position: absolute;
+  top: 0.9rem;
+  left: 0.9rem;
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  background: rgba(13,13,13,0.85);
+  border: 1px solid rgba(201,168,76,0.3);
+  color: var(--oro);
+  backdrop-filter: blur(4px);
+}
+
+/* Cuerpo de la card */
+.blog-card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.blog-fecha {
+  font-size: 0.6rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--oro-suave);
+  margin-bottom: 0.5rem;
+}
+
+.blog-card-titulo {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--texto);
+  line-height: 1.3;
+  margin-bottom: 0.6rem;
+  transition: color 0.2s;
+}
+
+.blog-post-card:hover .blog-card-titulo {
+  color: var(--oro-claro);
+}
+
+.blog-card-extracto {
+  font-size: 0.87rem;
+  font-weight: 300;
+  color: var(--texto-suave);
+  line-height: 1.7;
+  flex: 1;
+  margin-bottom: 1.2rem;
+}
+
+.blog-link {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--oro-suave);
+  border-bottom: 1px solid rgba(201,168,76,0.28);
+  padding-bottom: 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: color 0.2s, border-color 0.2s;
+  align-self: flex-start;
+  min-height: 44px;
+}
+
+.blog-link:hover {
+  color: var(--oro);
+  border-color: var(--oro);
+}
+
+/* ── PAGINACIÓN ── */
+/* (ya definida en subpage.css, aquí solo sobreescribimos si hace falta) */
+
+/* ════════════════════════
+   TABLET (600px+)
+════════════════════════ */
+@media (min-width: 600px) {
+
+  .blog-hero {
+    min-height: 340px;
+  }
+
+  /* 2 columnas */
+  .blog-listing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .blog-card-img-wrap img {
+    height: 220px;
+    max-height: 220px;
+  }
+}
+
+/* ════════════════════════
+   DESKTOP (960px+)
+════════════════════════ */
+@media (min-width: 960px) {
+
+  .blog-hero {
+    min-height: 420px;
+  }
+
+  /* 3 columnas */
+  .blog-listing-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .blog-card-img-wrap img {
+    height: 200px;
+    max-height: 200px;
+  }
+
+  .blog-filtros {
+    top: var(--navbar-h);
+  }
+
+  .blog-filtros-inner {
+    min-width: auto;
+    justify-content: center;
+  }
+}
