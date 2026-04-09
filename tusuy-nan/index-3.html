@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>Tusuy Ñan | Clases de Folklore Argentino en Madrid</title>
+  <meta name="description" content="Clases y espectáculos de folklore argentino en Madrid. Chacarera, zamba, malambo y danzas tradicionales argentinas con Agustina & Miguel." />
+  <meta name="keywords" content="folklore argentino Madrid, clases de chacarera Madrid, zamba Madrid, malambo Madrid, danza tradicional argentina Madrid, espectáculos folklore argentino" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Tusuy Ñan | Folklore Argentino en Madrid" />
+  <meta property="og:description" content="Clases y espectáculos de danza tradicional argentina. Chacarera, zamba y malambo desde Madrid." />
+  <meta property="og:image" content="https://tusuy.netlify.app/img/fondo%20negro.jpg" />
+  <meta property="og:url" content="https://tusuy.netlify.app" />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="./img/Logo bailando 3.1.png" />
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
+
+  <!-- CSS — rutas relativas para Netlify -->
+  <link rel="stylesheet" href="./css/base.css" />
+  <link rel="stylesheet" href="./css/navbar.css" />
+  <link rel="stylesheet" href="./css/footer.css" />
+  <link rel="stylesheet" href="./css/home.css" />
+</head>
+
+<body>
+
+<!-- ===== BANNER DE COOKIES ===== -->
+<style>
+  #cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #1a1a1a;
+    color: #f0ede8;
+    padding: 1.2rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    z-index: 9999;
+    font-family: inherit;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.4);
+    flex-wrap: wrap;
+  }
+  #cookie-banner p { margin: 0; flex: 1; min-width: 220px; color: #f0ede8; }
+  #cookie-banner a { color: #c9a96e; text-decoration: underline; }
+  .cookie-btns { display: flex; gap: 0.75rem; flex-shrink: 0; }
+  .cookie-btn-accept {
+    background: #c9a96e; color: #1a1a1a; border: none;
+    padding: 0.55rem 1.3rem; border-radius: 4px; cursor: pointer;
+    font-weight: 700; font-size: 0.88rem; transition: background 0.2s;
+  }
+  .cookie-btn-accept:hover { background: #b8944f; }
+  .cookie-btn-reject {
+    background: transparent; color: #f0ede8; border: 1px solid #555;
+    padding: 0.55rem 1.3rem; border-radius: 4px; cursor: pointer;
+    font-size: 0.88rem; transition: border-color 0.2s;
+  }
+  .cookie-btn-reject:hover { border-color: #999; }
+</style>
+
+<div id="cookie-banner" role="dialog" aria-label="Aviso de cookies">
+  <p>
+    Usamos cookies propias para el funcionamiento del formulario de contacto.
+    No usamos cookies de terceros ni publicidad.
+    Puedes consultar nuestra
+    <a href="./politica-de-privacidad.html">política de privacidad</a>.
+  </p>
+  <div class="cookie-btns">
+    <button class="cookie-btn-reject" onclick="rejectCookies()">Rechazar</button>
+    <button class="cookie-btn-accept" onclick="acceptCookies()">Aceptar</button>
+  </div>
+</div>
+
+<script>
+  (function() {
+    if (localStorage.getItem('cookieConsent')) {
+      document.getElementById('cookie-banner').style.display = 'none';
+    }
+  })();
+  function acceptCookies() {
+    localStorage.setItem('cookieConsent', 'accepted');
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+  function rejectCookies() {
+    localStorage.setItem('cookieConsent', 'rejected');
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+</script>
+<!-- ===== FIN BANNER DE COOKIES ===== -->
+
+
+  <!-- NAVBAR -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- ══════════════════════════════════════
+       HERO
+  ══════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-bg">
+      <img
+        src="./img/fondo negro.jpg"
+        alt="Agustina y Miguel, folklore argentino en Madrid"
+        loading="eager"
+        id="heroBgImg"
+      />
+      <div class="hero-bg-overlay"></div>
+    </div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">De Argentina a Madrid</p>
+      <h1 class="hero-title">
+        Folklore Argentino<br>
+        <em>Tusuy Ñan</em>
+      </h1>
+      <h2 class="section-title"><em>Camino de la danza</em></h2>
+      <p class="hero-subtitle">
+        Clases y espectáculos de danza tradicional argentina con raíces sudamericanas.
+        Chacarera, zamba y malambo desde Madrid, de la mano de Agustina &amp; Miguel.
+      </p>
+      <div class="hero-actions">
+        <a href="#clases" class="btn-oro">Ver Clases</a>
+        <a href="#contacto" class="btn-outline">Solicitar Show</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">+10</div>
+          <div class="stat-label">Años en escena</div>
+        </div>
+        <div>
+          <div class="stat-num">4</div>
+          <div class="stat-label">Países</div>
+        </div>
+        <div>
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Auténtico</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint" aria-hidden="true">
+      <span></span>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       NUESTRO FOLKLORE
+  ══════════════════════════════════════ -->
+  <section id="folklore">
+    <div class="folklore-inner">
+      <div class="reveal">
+        <p class="eyebrow">Nuestra identidad</p>
+        <h2 class="section-title">Nuestro <em>Folklore</em></h2>
+        <p class="folklore-text">
+          Trabajamos principalmente con danzas tradicionales argentinas como chacarera, zamba y
+          malambo, preservando su esencia cultural y proyectándolas hacia nuevos espacios escénicos.
+        </p>
+        <p class="folklore-text">
+          Desde Madrid llevamos el folklore argentino a festivales, teatros y escuelas de toda
+          Europa, sin perder la raíz que nos define.
+        </p>
+        <div class="folklore-tags">
+          <span class="tag">Chacarera</span>
+          <span class="tag">Zamba</span>
+          <span class="tag">Malambo</span>
+          <span class="tag">Folklore Argentino</span>
+          <span class="tag">Madrid</span>
+          <span class="tag">Danza Tradicional</span>
+        </div>
+      </div>
+      <div class="folklore-pilares reveal">
+        <div class="pilar">
+          <div class="pilar-title">Identidad &amp; Territorio</div>
+          <div class="pilar-text">El folklore nace de la tierra, del paisaje y de quienes lo habitaron. Transmitimos esa geografía emocional con cada movimiento.</div>
+        </div>
+        <div class="pilar">
+          <div class="pilar-title">Comunidad &amp; Memoria</div>
+          <div class="pilar-text">La danza tradicional es un acto colectivo. En nuestras clases y espectáculos, cada persona forma parte de ese legado vivo.</div>
+        </div>
+        <div class="pilar">
+          <div class="pilar-title">Escena &amp; Tradición</div>
+          <div class="pilar-text">Llevamos el folklore a escenarios contemporáneos sin traicionar su espíritu. Técnica, pasión y autenticidad en cada función.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CLASES
+  ══════════════════════════════════════ -->
+  <section id="clases">
+    <div class="section-header reveal">
+      <p class="eyebrow center">Formación</p>
+      <h2 class="section-title">Nuestras Clases</h2>
+      <p class="section-subtitle">Folklore argentino en Madrid para todos los niveles. Técnica, esencia y tradición en cada sesión.</p>
+    </div>
+    <div class="clases-grid">
+
+      <div class="clase-card reveal">
+        <span class="clase-num">01</span>
+        <div class="clase-origen">Argentina</div>
+        <h3 class="clase-nombre">Taller de Folklore Argentino</h3>
+        <p class="clase-desc">Una experiencia dinámica donde aprenderás distintas danzas del folklore como: Chacarera, Gato, Escondido, Zambas y muchos más.</p>
+        <div class="clase-footer">
+          <span class="clase-nivel">Todos los niveles</span>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScEq_d7zS1VdqPjqW7KhTDardm_DSz-I-g7JGvjxgZeINDueA/viewform" class="clase-link" target="_blank" rel="noopener">Inscribirse →</a>
+        </div>
+      </div>
+
+      <div class="clase-card reveal">
+        <span class="clase-num">02</span>
+        <div class="clase-origen">Argentina</div>
+        <h3 class="clase-nombre">Elenco Tusuy Ñan</h3>
+        <p class="clase-desc">Un espacio donde trabajamos la danza tanto estilizada como tradicional para escenario y así representar el folklore argentino en Europa.</p>
+        <div class="clase-footer">
+          <span class="clase-nivel">Con conocimiento previo</span>
+          <a href="https://forms.gle/ts8Kjhfhya6NLiP17" class="clase-link" target="_blank" rel="noopener">Inscribirse →</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="clases-cta">
+      <a href="#contacto" class="btn-oro">Consultar sobre clases en Madrid</a>
+    </div>
+  </section>
+
+
+  <!-- FRANJA DIVISORA -->
+  <div class="divisor-sudamericano">
+    <div class="divisor-linea"></div>
+    <div class="divisor-texto">
+      <span class="divisor-eyebrow">Sin Fronteras</span>
+      <span class="divisor-titulo">Folklore <em>Sudamericano</em></span>
+    </div>
+    <div class="divisor-linea"></div>
+  </div>
+
+  <!-- SECCIÓN FOLKLORE SUDAMERICANO -->
+  <section id="clases-sudamericano">
+    <div class="section-header reveal">
+      <p class="eyebrow center">Folklore vivo</p>
+      <h2 class="section-title">Danzas de <em>Latinoamérica</em></h2>
+      <p class="section-subtitle">Más allá de Argentina, llevamos la riqueza cultural de otros países de Sudamérica a los escenarios y salas de Madrid.</p>
+    </div>
+
+    <div class="clases-grid clases-grid--sud">
+      <div class="clase-card reveal">
+        <span class="clase-num">01</span>
+        <div class="clase-origen">Perú · Los Andes</div>
+        <h3 class="clase-nombre">Danzas Peruanas y andinas</h3>
+        <p class="clase-desc">Un recorrido por la costa, sierra y selva del Perú. Traemos la cosmovisión andina a través de sus danzas.</p>
+        <div class="clase-footer">
+          <span class="clase-nivel">Inicial</span>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScEq_d7zS1VdqPjqW7KhTDardm_DSz-I-g7JGvjxgZeINDueA/viewform" class="clase-link" target="_blank" rel="noopener">Inscribirse →</a>
+        </div>
+      </div>
+
+      <div class="clase-card reveal">
+        <span class="clase-num">02</span>
+        <div class="clase-origen">Bolivia · Oriente</div>
+        <h3 class="clase-nombre">Danzas del Oriente Boliviano</h3>
+        <p class="clase-desc">La energía y el color del oriente de Bolivia. Ritmos como chovenas, taquiraris, carnavales y más. Danzas que celebran la vida.</p>
+        <div class="clase-footer">
+          <span class="clase-nivel">Inicial · Intermedio</span>
+          <a href="#contacto" class="clase-link">Consultar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="clases-cta">
+      <a href="#contacto" class="btn-oro">Consultar sobre folklore sudamericano</a>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       EMOCIONAL
+  ══════════════════════════════════════ -->
+  <section id="emocional">
+    <div class="emocional-inner reveal">
+      <blockquote class="emocional-quote">
+        "Bailamos historias de <strong>tierra</strong>,<br>
+        de <strong>encuentro</strong> y de <strong>raíz</strong>."
+      </blockquote>
+      <p class="emocional-texto">
+        El folklore argentino no es solo danza. Es identidad, territorio, comunidad y memoria.
+        En cada clase y espectáculo, preservamos ese legado y lo llevamos a nuevos espacios,
+        nuevas generaciones y nuevos continentes.
+      </p>
+      <div class="pilares-row">
+        <div class="pilar-item"><div class="pilar-icono">🌾</div><div class="pilar-label">Identidad</div></div>
+        <div class="pilar-item"><div class="pilar-icono">🗺</div><div class="pilar-label">Territorio</div></div>
+        <div class="pilar-item"><div class="pilar-icono">🤝</div><div class="pilar-label">Comunidad</div></div>
+        <div class="pilar-item"><div class="pilar-icono">🌿</div><div class="pilar-label">Memoria</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       PRÓXIMO EVENTO
+  ══════════════════════════════════════ -->
+  <section id="evento">
+    <div class="evento-inner">
+      <div>
+        <div class="evento-etiqueta">Próximo evento</div>
+        <div class="evento-titulo">Espectáculo de Folklore Argentino — Madrid</div>
+        <div class="evento-fecha">Consulta fechas disponibles · Plazas limitadas</div>
+      </div>
+      <a href="#contacto" class="btn-oro">Reservar plaza →</a>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       ESPECTÁCULOS
+  ══════════════════════════════════════ -->
+  <section id="espectaculo">
+    <div class="section-header reveal">
+      <p class="eyebrow center">Contratación</p>
+      <h2 class="section-title">Espectáculos Profesionales</h2>
+      <p class="section-subtitle">Folklore argentino y sudamericano para festivales, eventos privados y teatros de toda Europa.</p>
+    </div>
+    <div class="espect-grid">
+
+      <div class="espect-card reveal">
+        <img src="./img/folk toledo.jpg" alt="Estampa Folklórica Argentina en Madrid" class="espect-img" loading="lazy" />
+        <div class="espect-info">
+          <div class="espect-pais">Argentina</div>
+          <h3 class="espect-nombre">Estampa Folklórica Argentina</h3>
+          <p class="espect-desc">Malambo, zapateo, boleadoras y la sutileza de la zamba estilizada. Lo mejor del folklore argentino en escena.</p>
+          <a href="#contacto" class="espect-link">Solicitar Dossier →</a>
+        </div>
+      </div>
+
+      <div class="espect-card reveal">
+        <img src="./img/berlin.jpg" alt="Gala de Tradición Peruana" class="espect-img" loading="lazy" />
+        <div class="espect-info">
+          <div class="espect-pais">Perú</div>
+          <h3 class="espect-nombre">Gala de Tradición Peruana</h3>
+          <p class="espect-desc">Un recorrido por la costa y sierra del Perú destacando la Marinera y danzas andinas.</p>
+          <a href="#contacto" class="espect-link">Solicitar Dossier →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       NOSOTROS
+  ══════════════════════════════════════ -->
+  <section id="nosotros">
+    <div class="nosotros-inner">
+      <div class="nosotros-img-wrap reveal">
+        <img src="./img/folk duo.jpg" alt="Agustina y Miguel, especialistas en folklore argentino en Madrid" class="nosotros-img" loading="lazy" />
+        <div class="nosotros-img-accent"></div>
+      </div>
+      <div class="reveal">
+        <p class="eyebrow">Arte, Tradición &amp; Escenario</p>
+        <h2 class="section-title">Agustina<br>&amp; Miguel</h2>
+        <p class="nosotros-text">
+          Somos <strong>especialistas en folklore argentino</strong> con más de 10 años sobre los escenarios
+          de Argentina y Europa. Desde Madrid llevamos la danza tradicional argentina a festivales,
+          teatros y escuelas de todo el continente.
+        </p>
+        <p class="nosotros-text">
+          En <strong>Tusuy Ñan</strong> fusionamos la técnica con el espíritu social del folklore, creando
+          un puente cultural único para alumnos y espectadores que buscan conectar con la raíz sudamericana.
+        </p>
+        <div class="nosotros-stats">
+          <div><div class="stat-num">+10</div><div class="stat-label">Años en escena</div></div>
+          <div><div class="stat-num">4</div><div class="stat-label">Países</div></div>
+          <div><div class="stat-num">ES</div><div class="stat-label">Madrid</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       TESTIMONIOS
+  ══════════════════════════════════════ -->
+  <section id="testimonios">
+    <div class="section-header reveal">
+      <p class="eyebrow center">Palabras de alumnos</p>
+      <h2 class="section-title">Lo que dicen<br>de nosotros</h2>
+    </div>
+    <div class="test-grid">
+      <div class="testimonio reveal">
+        <p class="test-texto">Empecé sin saber nada de folklore y ahora la chacarera ya es parte de mi vida. Agustina transmite la esencia de cada danza con una paciencia y pasión increíbles.</p>
+        <div class="test-autor">— María G., alumna de chacarera</div>
+      </div>
+      <div class="testimonio reveal">
+        <p class="test-texto">Contratamos el espectáculo de folklore argentino para nuestro festival y fue lo más aplaudido de la noche. Profesionalismo total y un show de altísimo nivel.</p>
+        <div class="test-autor">— Festival Iberoamérica, Madrid</div>
+      </div>
+      <div class="testimonio reveal">
+        <p class="test-texto">Miguel es un maestro del malambo. Su técnica es impecable y su forma de enseñar hace que aprendas rápido y con ganas de más.</p>
+        <div class="test-autor">— Carlos R., alumno de malambo</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       BLOG
+  ══════════════════════════════════════ -->
+  <section id="blog">
+    <div class="section-header reveal">
+      <p class="eyebrow center">Bitácora del Camino</p>
+      <h2 class="section-title">Del Folklore,<br><em>con amor</em></h2>
+    </div>
+    <div class="blog-grid">
+      <a href="./blog/tucuman.html" class="blog-card reveal">
+        <img src="./img/folk duo.jpg" alt="Folklore en Tucumán" class="blog-img" loading="lazy" />
+        <div class="blog-body">
+          <div class="blog-fecha">8 Ene, 2026</div>
+          <div class="blog-titulo">Entre Bombos y Zamba: Mi viaje por Tucumán</div>
+          <div class="blog-extracto">Agustina nos cuenta la esencia del folklore en su tierra natal y cómo el zapateo conecta con la tierra...</div>
+          <span class="blog-link">Leer crónica →</span>
+        </div>
+      </a>
+      <a href="./blog/post-ej.html" class="blog-card reveal">
+        <img src="./img/caporal.png" alt="Caporales en Madrid" class="blog-img" loading="lazy" />
+        <div class="blog-body">
+          <div class="blog-fecha">1 Ene, 2026</div>
+          <div class="blog-titulo">5 Consejos para dominar el salto del Caporal</div>
+          <div class="blog-extracto">Miguel comparte técnica y preparación física para bailar con la energía de los Andes en Madrid...</div>
+          <span class="blog-link">Leer consejos →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CONTACTO — Formulario Netlify
+  ══════════════════════════════════════ -->
+  <section id="contacto">
+    <div class="contacto-inner">
+      <p class="eyebrow center">¿Listo para empezar?</p>
+      <h2 class="contacto-title">Escríbenos</h2>
+      <p class="contacto-sub">
+        Únete a nuestras clases de folklore argentino en Madrid o solicita una propuesta para eventos y espectáculos.
+      </p>
+
+      <!-- ✅ FORMULARIO NETLIFY: atributos name, netlify y netlify-honeypot son obligatorios -->
+      <form name="contacto" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+
+        <!-- Campo oculto obligatorio para Netlify -->
+        <input type="hidden" name="form-name" value="contacto" />
+        <!-- Honeypot anti-spam: campo invisible para robots -->
+        <p style="display:none"><label>No rellenar: <input name="bot-field" /></label></p>
+
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" autocomplete="name" required />
+          </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="tu@email.com" autocomplete="email" required />
+          </div>
+          <div class="form-field full">
+            <label for="interes">¿Qué te interesa?</label>
+            <select id="interes" name="interes">
+              <option value="">Selecciona una opción</option>
+              <option value="clases-presenciales">Clases de folklore argentino en Madrid</option>
+              <option value="clases-online">Clases virtuales / online</option>
+              <option value="espectaculo">Contratar espectáculo</option>
+              <option value="evento">Evento particular / personalizado</option>
+            </select>
+          </div>
+          <div class="form-field full">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos más..."></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn-submit">Enviar Mensaje →</button>
+      </form>
+
+      <div class="contacto-datos">
+        <div class="c-dato">
+          <strong>Email</strong>
+          <span><a href="mailto:Tusuy.nan@gmail.com">Tusuy.nan@gmail.com</a></span>
+        </div>
+        <div class="c-dato">
+          <strong>Ubicación</strong>
+          <span>Madrid, España</span>
+        </div>
+        <div class="c-dato">
+          <strong>Especialidad</strong>
+          <span>Folklore Argentino</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div id="footer-placeholder"></div>
+
+  <!-- JS — ruta relativa -->
+  <script src="./js/main.js"></script>
+
+</body>
+</html>
