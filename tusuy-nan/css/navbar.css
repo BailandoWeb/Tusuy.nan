@@ -1,5 +1,5 @@
 /* ================================================
-   NAVBAR.CSS — Navegación · Mobile First
+   NAVBAR.CSS  Navegación · Mobile First
    Todos los selectores están acotados a #navbar
    para no interferir con <nav> de paginación,
    breadcrumb u otros elementos de la página.
@@ -16,7 +16,7 @@
   }
 }
 
-/* ── NAVBAR PRINCIPAL ── */
+/* â”€â”€ NAVBAR PRINCIPAL â”€â”€ */
 #navbar {
   position: fixed;
   top: 0;
@@ -38,7 +38,7 @@
   padding-bottom: 0.7rem;
 }
 
-/* ── LOGO ── */
+/* â”€â”€ LOGO â”€â”€ */
 #navbar .nav-logo-wrap {
   display: flex;
   align-items: center;
@@ -72,7 +72,7 @@
   display: block;
 }
 
-/* ── HAMBURGER (mobile) ── */
+/* â”€â”€ HAMBURGER (mobile) â”€â”€ */
 #navbar .nav-toggle {
   display: flex;
   flex-direction: column;
@@ -107,14 +107,14 @@
   transform: translateY(-8.25px) rotate(-45deg);
 }
 
-/* ── MENÚ MÓVIL ── */
+/* â”€â”€ MENÃš MÃ“VIL â”€â”€ */
 #navbar .nav-menu {
   position: fixed;
   top: 0;
   right: 0;
-  width: 100%;
+  width: min(320px, 85vw);
   height: 100vh;
-  background: var(--carbon);
+  background: #1e1a14;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -124,7 +124,8 @@
   transform: translateX(100%);
   transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
   padding: 5rem var(--px) 3rem;
-  border-left: 1px solid rgba(201,168,76,0.1);
+  border-left: 1px solid rgba(201,168,76,0.35);
+  box-shadow: -8px 0 40px rgba(0,0,0,0.6);
   z-index: 100;
 }
 
@@ -135,11 +136,11 @@
 #navbar .nav-menu li {
   width: 100%;
   text-align: center;
-  border-bottom: 1px solid rgba(201,168,76,0.06);
+  border-bottom: 1px solid rgba(201,168,76,0.15);
 }
 
 #navbar .nav-menu li:first-child {
-  border-top: 1px solid rgba(201,168,76,0.06);
+  border-top: 1px solid rgba(201,168,76,0.15);
 }
 
 #navbar .nav-menu a {
@@ -150,7 +151,7 @@
   font-size: 1rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--texto-suave);
+  color: var(--arena);
   transition: color 0.2s;
   min-height: 56px;
 }
@@ -177,7 +178,7 @@
   color: var(--negro) !important;
 }
 
-/* ── OVERLAY ── */
+/* â”€â”€ OVERLAY â”€â”€ */
 .nav-overlay {
   position: fixed;
   inset: 0;
@@ -193,14 +194,14 @@
   pointer-events: all;
 }
 
-/* ── TABLET ── */
+/* â”€â”€ TABLET â”€â”€ */
 @media (min-width: 600px) {
   #navbar .nav-logo-img {
     height: 42px;
   }
 }
 
-/* ── DESKTOP ── */
+/* â”€â”€ DESKTOP â”€â”€ */
 @media (min-width: 960px) {
   #navbar .nav-toggle,
   .nav-overlay {
