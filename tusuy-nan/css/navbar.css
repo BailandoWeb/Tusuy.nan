@@ -1,22 +1,22 @@
 /* ================================================
-   NAVBAR.CSS  Navegación · Mobile First
+   NAVBAR.CSS — Navegación · Mobile First
    Todos los selectores están acotados a #navbar
    para no interferir con <nav> de paginación,
    breadcrumb u otros elementos de la página.
    ================================================ */
-
+ 
 /* Altura del navbar accesible desde cualquier CSS */
 :root {
   --navbar-h: 70px;
 }
-
+ 
 @media (min-width: 960px) {
   :root {
     --navbar-h: 74px;
   }
 }
-
-/* â”€â”€ NAVBAR PRINCIPAL â”€â”€ */
+ 
+/* ── NAVBAR PRINCIPAL ── */
 #navbar {
   position: fixed;
   top: 0;
@@ -26,31 +26,31 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(201, 168, 76, 0.846);
+  background: rgba(13,13,13,0.95);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(201,168,76,0.1);
   transition: padding 0.3s, transform 0.3s;
 }
-
+ 
 #navbar.scrolled {
   padding-top: 0.7rem;
   padding-bottom: 0.7rem;
 }
-
-/* â”€â”€ LOGO â”€â”€ */
+ 
+/* ── LOGO ── */
 #navbar .nav-logo-wrap {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   z-index: 101;
 }
-
+ 
 #navbar .nav-logo-img {
   height: 38px;
   width: auto;
 }
-
+ 
 #navbar .nav-logo-nombre {
   font-family: var(--font-display);
   font-size: 1rem;
@@ -61,7 +61,7 @@
   line-height: 1;
   display: block;
 }
-
+ 
 #navbar .nav-logo-sub {
   font-size: 0.52rem;
   letter-spacing: 0.28em;
@@ -71,50 +71,68 @@
   opacity: 0.75;
   display: block;
 }
-
-/* â”€â”€ HAMBURGER (mobile) â”€â”€ */
+ 
+/* ── HAMBURGER (mobile) ── */
 #navbar .nav-toggle {
+  /* Área táctil: 44x44px mínimo recomendado */
+  width: 44px;
+  height: 44px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: 26px;
-  height: 18px;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
   cursor: pointer;
   z-index: 101;
-  background: none;
+  /* Sin ningún fondo ni borde visibles */
+  background: transparent;
   border: none;
-  margin: -10px;
-  padding: 10px;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  /* Sin outline feo al hacer click en móvil */
+  -webkit-tap-highlight-color: transparent;
 }
-
+ 
+/* Las 3 líneas */
 #navbar .nav-toggle span {
   display: block;
-  width: 100%;
+  width: 24px;
   height: 1.5px;
   background: var(--oro);
-  transition: all 0.3s ease;
+  border-radius: 2px;
+  transition: width 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
   transform-origin: center;
+  flex-shrink: 0;
 }
-
+ 
+/* Línea central: ligeramente más corta — detalle elegante */
+#navbar .nav-toggle span:nth-child(2) {
+  width: 16px;
+}
+ 
+/* Cuando el menú está abierto: forma X */
 #navbar .nav-toggle.open span:nth-child(1) {
-  transform: translateY(8.25px) rotate(45deg);
+  width: 24px;
+  transform: translateY(6.5px) rotate(45deg);
 }
 #navbar .nav-toggle.open span:nth-child(2) {
   opacity: 0;
   transform: scaleX(0);
 }
 #navbar .nav-toggle.open span:nth-child(3) {
-  transform: translateY(-8.25px) rotate(-45deg);
+  width: 24px;
+  transform: translateY(-6.5px) rotate(-45deg);
 }
-
-/* â”€â”€ MENÃš MÃ“VIL â”€â”€ */
+ 
+/* ── MENÚ MÓVIL ── */
 #navbar .nav-menu {
   position: fixed;
   top: 0;
   right: 0;
-  width: min(320px, 85vw);
+  width: 100%;
   height: 100vh;
-  background: #1e1a14;
+  background: var(--carbon);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -124,25 +142,24 @@
   transform: translateX(100%);
   transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
   padding: 5rem var(--px) 3rem;
-  border-left: 1px solid rgba(201,168,76,0.35);
-  box-shadow: -8px 0 40px rgba(0,0,0,0.6);
+  border-left: 1px solid rgba(201,168,76,0.1);
   z-index: 100;
 }
-
+ 
 #navbar .nav-menu.open {
   transform: translateX(0);
 }
-
+ 
 #navbar .nav-menu li {
   width: 100%;
   text-align: center;
-  border-bottom: 1px solid rgba(201,168,76,0.15);
+  border-bottom: 1px solid rgba(201,168,76,0.06);
 }
-
+ 
 #navbar .nav-menu li:first-child {
-  border-top: 1px solid rgba(201,168,76,0.15);
+  border-top: 1px solid rgba(201,168,76,0.06);
 }
-
+ 
 #navbar .nav-menu a {
   display: flex;
   align-items: center;
@@ -151,16 +168,16 @@
   font-size: 1rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--arena);
+  color: var(--texto-suave);
   transition: color 0.2s;
   min-height: 56px;
 }
-
+ 
 #navbar .nav-menu a:hover,
 #navbar .nav-menu a:active {
   color: var(--oro);
 }
-
+ 
 #navbar .nav-menu .nav-cta {
   margin-top: 1.5rem;
   border: 1px solid var(--oro);
@@ -172,13 +189,13 @@
   justify-content: center;
   transition: all 0.25s;
 }
-
+ 
 #navbar .nav-menu .nav-cta:hover {
   background: var(--oro);
   color: var(--negro) !important;
 }
-
-/* â”€â”€ OVERLAY â”€â”€ */
+ 
+/* ── OVERLAY ── */
 .nav-overlay {
   position: fixed;
   inset: 0;
@@ -188,26 +205,26 @@
   pointer-events: none;
   transition: opacity 0.3s;
 }
-
+ 
 .nav-overlay.open {
   opacity: 1;
   pointer-events: all;
 }
-
-/* â”€â”€ TABLET â”€â”€ */
+ 
+/* ── TABLET ── */
 @media (min-width: 600px) {
   #navbar .nav-logo-img {
     height: 42px;
   }
 }
-
-/* â”€â”€ DESKTOP â”€â”€ */
+ 
+/* ── DESKTOP ── */
 @media (min-width: 960px) {
   #navbar .nav-toggle,
   .nav-overlay {
     display: none !important;
   }
-
+ 
   #navbar .nav-menu {
     position: static;
     width: auto;
@@ -220,17 +237,17 @@
     border: none;
     z-index: auto;
   }
-
+ 
   #navbar .nav-menu li {
     width: auto;
     text-align: left;
     border: none;
   }
-
+ 
   #navbar .nav-menu li:first-child {
     border: none;
   }
-
+ 
   #navbar .nav-menu a {
     font-size: 0.7rem;
     padding: 0;
@@ -238,7 +255,7 @@
     display: inline;
     color: var(--texto-suave);
   }
-
+ 
   #navbar .nav-menu .nav-cta {
     margin-top: 0;
     border: 1px solid var(--oro);
