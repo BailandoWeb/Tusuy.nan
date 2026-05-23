@@ -379,6 +379,72 @@
   max-width: 380px;
 }
 
+/* ══════════════════════════════════════════════
+   FRANJA DIVISORA SUDAMERICANO
+══════════════════════════════════════════════ */
+ 
+.divisor-sudamericano {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0 var(--px);
+  background: var(--carbon);
+  border-top: 1px solid rgba(201,168,76,0.07);
+  border-bottom: 1px solid rgba(201,168,76,0.07);
+  min-height: 90px;
+}
+ 
+.divisor-linea {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201,168,76,0.35), transparent);
+}
+ 
+.divisor-texto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  flex-shrink: 0;
+  text-align: center;
+}
+ 
+.divisor-eyebrow {
+  font-size: 0.55rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--oro-suave);
+}
+ 
+.divisor-titulo {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  font-weight: 700;
+  color: var(--texto);
+  line-height: 1.1;
+  white-space: nowrap;
+}
+ 
+.divisor-titulo em {
+  font-style: italic;
+  color: var(--oro);
+}
+ 
+ 
+/* ══════════════════════════════════════════════
+   CLASES SUDAMERICANAS
+══════════════════════════════════════════════ */
+ 
+#clases-sudamericano {
+  padding: var(--section-py) var(--px);
+  background: var(--carbon);
+}
+ 
+.clases-grid--sud {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+ 
 /* ── SECCIÓN EMOCIONAL ── */
 #emocional {
   padding: var(--section-py) var(--px);
@@ -492,48 +558,303 @@
   color: var(--texto);
 }
 
-/* ── EVENTO PRÓXIMO ── */
+/* ══════════════════════════════════════════════
+   EVENTOS — Próximo + Pasados
+══════════════════════════════════════════════ */
+ 
 #evento {
-  background: var(--azul-criollo);
-  padding: 2rem var(--px);
-  border-top: 1px solid rgba(201,168,76,0.1);
-  border-bottom: 1px solid rgba(201,168,76,0.1);
+  background: var(--negro);
+  padding: var(--section-py) var(--px);
+  border-top: 1px solid rgba(201,168,76,0.07);
+  border-bottom: 1px solid rgba(201,168,76,0.07);
 }
-
-.evento-inner {
+ 
+.eventos-wrap {
   max-width: 1100px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 3rem;
 }
-
+ 
+/* ── Card próximo evento ── */
+.evento-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: rgba(201,168,76,0.08);
+  margin-top: 2rem;
+}
+ 
+/* Flyer */
+.evento-flyer {
+  position: relative;
+  background: var(--carbon-suave);
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  max-height: 380px;
+}
+ 
+.evento-flyer-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: sepia(8%) brightness(0.92);
+  transition: transform 0.5s;
+}
+ 
+.evento-flyer:hover .evento-flyer-img { transform: scale(1.03); }
+ 
+/* Placeholder cuando no hay imagen cargada */
+.flyer-placeholder .evento-flyer-img { display: none; }
+.flyer-placeholder .flyer-no-img     { display: flex; }
+ 
+.flyer-no-img {
+  display: none;
+  position: absolute;
+  inset: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  background: var(--carbon);
+  border: 1px dashed rgba(201,168,76,0.2);
+}
+ 
+.flyer-icono {
+  font-size: 2.5rem;
+  color: rgba(201,168,76,0.2);
+  line-height: 1;
+}
+ 
+.flyer-proximamente {
+  font-size: 0.6rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--texto-fino);
+}
+ 
+/* Info del evento */
+.evento-info {
+  background: var(--carbon);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+ 
 .evento-etiqueta {
   font-size: 0.6rem;
   letter-spacing: 0.38em;
   text-transform: uppercase;
   color: var(--oro);
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
 }
-
+ 
 .evento-titulo {
   font-family: var(--font-display);
-  font-size: 1.3rem;
+  font-size: clamp(1.4rem, 5vw, 2rem);
+  font-weight: 700;
+  color: var(--texto);
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+ 
+.evento-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(201,168,76,0.1);
+}
+ 
+.evento-meta-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+ 
+.evento-meta-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--oro-suave);
+  width: 52px;
+  flex-shrink: 0;
+}
+ 
+.evento-meta-val {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--texto-suave);
+}
+ 
+.evento-desc {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--texto-suave);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+ 
+.evento-acciones {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+ 
+.evento-acciones .btn-oro,
+.evento-acciones .btn-outline {
+  width: 100%;
+  text-align: center;
+}
+ 
+/* ── Eventos pasados ── */
+.eventos-pasados {
+  border-top: 1px solid rgba(201,168,76,0.1);
+  padding-top: 2rem;
+}
+ 
+.pasados-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(201,168,76,0.1);
+  padding: 0 0 1.2rem;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 48px;
+}
+ 
+.pasados-toggle-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+  transition: color 0.2s;
+}
+ 
+.pasados-toggle:hover .pasados-toggle-label { color: var(--oro); }
+ 
+/* Flecha animada */
+.pasados-toggle-icono {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  flex-shrink: 0;
+}
+ 
+.pasados-toggle-icono::before,
+.pasados-toggle-icono::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  height: 1.5px;
+  width: 9px;
+  background: var(--oro-suave);
+  transition: transform 0.3s ease;
+}
+ 
+.pasados-toggle-icono::before {
+  right: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  transform-origin: right center;
+}
+ 
+.pasados-toggle-icono::after {
+  left: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+  transform-origin: left center;
+}
+ 
+.pasados-toggle[aria-expanded="true"] .pasados-toggle-icono::before {
+  transform: translateY(-50%) rotate(-45deg);
+}
+.pasados-toggle[aria-expanded="true"] .pasados-toggle-icono::after {
+  transform: translateY(-50%) rotate(45deg);
+}
+ 
+/* Lista colapsable */
+.pasados-lista {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), opacity 0.35s ease;
+}
+ 
+.pasados-lista.open {
+  max-height: 1200px;
+  opacity: 1;
+}
+ 
+.pasados-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: rgba(201,168,76,0.08);
+  margin-top: 1.5rem;
+}
+ 
+.pasado-card {
+  display: flex;
+  flex-direction: row;
+  background: var(--carbon);
+  overflow: hidden;
+  transition: background 0.2s;
+}
+ 
+.pasado-card:hover { background: var(--carbon-med); }
+ 
+.pasado-flyer {
+  width: 90px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+ 
+.pasado-flyer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(30%) brightness(0.8);
+  transition: filter 0.3s;
+}
+ 
+.pasado-card:hover .pasado-flyer img { filter: grayscale(0%) brightness(0.9); }
+ 
+.pasado-info {
+  padding: 1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.25rem;
+}
+ 
+.pasado-fecha {
+  font-size: 0.58rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--oro-suave);
+}
+ 
+.pasado-nombre {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--texto);
   line-height: 1.2;
 }
-
-.evento-fecha {
-  font-size: 0.83rem;
+ 
+.pasado-desc {
+  font-size: 0.8rem;
   font-weight: 300;
   color: var(--texto-suave);
-  margin-top: 0.3rem;
 }
-
-.evento-inner .btn-oro {
-  width: 100%;
-}
+ 
+ 
 
 /* ── ESPECTÁCULOS ── */
 #espectaculo {
