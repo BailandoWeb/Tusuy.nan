@@ -1,5 +1,7 @@
+
 User-agent: *
 Allow: /
-
-# Indica dónde está el mapa de tu sitio (cámbialo si tienes dominio propio)
-Sitemap: https://tusuynan.netlify.app/sitemap.xml
+ 
+# Sitemap
+Sitemap: https://tusuynan.com/sitemap.xml
+ 
