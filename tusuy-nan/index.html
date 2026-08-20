@@ -485,6 +485,74 @@
   </section>
 
   <!-- ══════════════════════════════════════
+       TESTIMONIOS
+       - Las tarjetas se cargan desde /data/testimonios.json (solo los aprobados)
+       - El formulario de abajo va a Netlify Forms (bandeja privada, con moderación)
+  ══════════════════════════════════════ -->
+  <section id="testimonios">
+    <div class="section-header reveal">
+      <p class="eyebrow center">Lo que dicen</p>
+      <h2 class="section-title">Voces de <em>Tusuy Ñan</em></h2>
+      <p class="section-subtitle">Reseñas reales de alumnos y personas que contrataron nuestros espectáculos.</p>
+    </div>
+
+    <div class="testimonios-grid" id="testimoniosGrid" data-testimonios-grid>
+      <!-- Las tarjetas se insertan aquí dinámicamente vía JS -->
+    </div>
+
+    <!-- Formulario público: envía a Netlify Forms para revisión antes de publicar -->
+    <div class="resena-form-wrap reveal">
+      <p class="eyebrow center">¿Ya nos conoces?</p>
+      <h3 class="resena-form-title">Déjanos tu reseña</h3>
+      <p class="resena-form-sub">
+        Leemos todas las reseñas antes de publicarlas. Si compartes tu experiencia, en unos días podrás verla aquí.
+      </p>
+
+      <form name="resena" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="resena-form">
+        <input type="hidden" name="form-name" value="resena" />
+        <p style="display:none"><label>No rellenar: <input name="bot-field" /></label></p>
+
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="resena-nombre">Nombre</label>
+            <input type="text" id="resena-nombre" name="nombre" placeholder="Tu nombre" autocomplete="name" required />
+          </div>
+          <div class="form-field">
+            <label for="resena-email">Email</label>
+            <input type="email" id="resena-email" name="email" placeholder="tu@email.com" autocomplete="email" required />
+            <small class="form-hint">No se publica, es solo para poder contactarte si hace falta.</small>
+          </div>
+          <div class="form-field">
+            <label for="resena-actividad">¿Qué hiciste con nosotros?</label>
+            <select id="resena-actividad" name="actividad">
+              <option value="">Selecciona una opción</option>
+              <option value="Clases presenciales">Clases presenciales</option>
+              <option value="Clases online">Clases online</option>
+              <option value="Espectáculo contratado">Espectáculo contratado</option>
+              <option value="Evento particular">Evento particular</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="resena-valoracion">Valoración</label>
+            <select id="resena-valoracion" name="valoracion" required>
+              <option value="5">★★★★★ Excelente</option>
+              <option value="4">★★★★☆ Muy bueno</option>
+              <option value="3">★★★☆☆ Bueno</option>
+              <option value="2">★★☆☆☆ Regular</option>
+              <option value="1">★☆☆☆☆ Malo</option>
+            </select>
+          </div>
+          <div class="form-field full">
+            <label for="resena-texto">Tu reseña</label>
+            <textarea id="resena-texto" name="texto" placeholder="Cuéntanos tu experiencia..." required></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn-submit">Enviar reseña →</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
        ESPECTÁCULOS
   ══════════════════════════════════════ -->
   <section id="espectaculo">
@@ -544,30 +612,6 @@
           <div><div class="stat-num">4</div><div class="stat-label">Países</div></div>
           <div><div class="stat-num">ES</div><div class="stat-label">Madrid</div></div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════
-       TESTIMONIOS
-  ══════════════════════════════════════ -->
-  <section id="testimonios">
-    <div class="section-header reveal">
-      <p class="eyebrow center">Palabras de alumnos</p>
-      <h2 class="section-title">Lo que dicen<br>de nosotros</h2>
-    </div>
-    <div class="test-grid">
-      <div class="testimonio reveal">
-        <p class="test-texto">Empecé sin saber nada de folklore y ahora la chacarera ya es parte de mi vida. Agustina transmite la esencia de cada danza con una paciencia y pasión increíbles.</p>
-        <div class="test-autor">— María G., alumna de chacarera</div>
-      </div>
-      <div class="testimonio reveal">
-        <p class="test-texto">Contratamos el espectáculo de folklore argentino para nuestro festival y fue lo más aplaudido de la noche. Profesionalismo total y un show de altísimo nivel.</p>
-        <div class="test-autor">— Festival Iberoamérica, Madrid</div>
-      </div>
-      <div class="testimonio reveal">
-        <p class="test-texto">Miguel es un maestro del malambo. Su técnica es impecable y su forma de enseñar hace que aprendas rápido y con ganas de más.</p>
-        <div class="test-autor">— Carlos R., alumno de malambo</div>
       </div>
     </div>
   </section>

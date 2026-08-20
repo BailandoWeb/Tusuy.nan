@@ -260,6 +260,50 @@ async function loadEvento() {
   }
 }
 
+/* ── 9. TESTIMONIOS — carga dinámica ──────────────
+   Lee /data/testimonios.json y pinta las tarjetas
+   de reseñas aprobadas. Para publicar una reseña
+   nueva: revísala en el panel de Netlify Forms y
+   agrégala aquí (a mano o desde /admin).
+───────────────────────────────────────────────── */
+async function loadTestimonios() {
+  const grid = document.querySelector('[data-testimonios-grid]');
+  if (!grid) return;
+
+  try {
+    const res = await fetch('/data/testimonios.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error('No se pudo leer testimonios.json');
+    const data = await res.json();
+    const lista = Array.isArray(data.testimonios) ? data.testimonios : [];
+
+    if (!lista.length) {
+      grid.closest('#testimonios')?.querySelector('.section-header')?.insertAdjacentHTML(
+        'beforeend',
+        '<p class="testimonios-vacio">Todavía no hay reseñas publicadas. ¡Sé el primero en dejar la tuya!</p>'
+      );
+      return;
+    }
+
+    grid.innerHTML = lista.map(t => {
+      const estrellas = '★'.repeat(Math.max(0, Math.min(5, Number(t.valoracion) || 5)))
+        + '☆'.repeat(5 - Math.max(0, Math.min(5, Number(t.valoracion) || 5)));
+      return `
+        <div class="testimonio-card reveal">
+          <div class="testimonio-estrellas" aria-label="${t.valoracion || 5} de 5 estrellas">${estrellas}</div>
+          <p class="testimonio-texto">"${(t.texto || '').replace(/</g, '&lt;')}"</p>
+          <div class="testimonio-autor">${(t.nombre || '').replace(/</g, '&lt;')}</div>
+          ${t.actividad ? `<div class="testimonio-actividad">${t.actividad.replace(/</g, '&lt;')}</div>` : ''}
+        </div>
+      `;
+    }).join('');
+
+    // Vuelve a activar la animación reveal para las tarjetas recién insertadas
+    initScrollReveal();
+  } catch (e) {
+    console.warn('No se pudieron cargar los testimonios:', e);
+  }
+}
+
 /* ── INIT ─────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   // Cargar componentes (si existen los placeholders)
@@ -277,4 +321,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initForm();
   loadEvento();
+  loadTestimonios();
 });

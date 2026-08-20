@@ -24,3 +24,21 @@ collections:
           - { label: "Flyer del evento", name: "flyer", widget: "image" }
           - { label: "Link del botón 'Reservar'", name: "linkReserva", widget: "string", default: "#contacto" }
           - { label: "Texto del botón", name: "textoReserva", widget: "string", default: "Reservar plaza →" }
+
+  - name: "testimonios"
+    label: "Testimonios"
+    files:
+      - file: "data/testimonios.json"
+        label: "Testimonios publicados"
+        name: "testimonios"
+        fields:
+          - label: "Reseñas"
+            name: "testimonios"
+            widget: "list"
+            summary: "{{fields.nombre}} — {{fields.valoracion}}★"
+            fields:
+              - { label: "Nombre", name: "nombre", widget: "string" }
+              - { label: "Actividad (ej. 'Clases presenciales')", name: "actividad", widget: "string", required: false }
+              - { label: "Valoración (1-5)", name: "valoracion", widget: "number", min: 1, max: 5, default: 5, value_type: "int" }
+              - { label: "Texto de la reseña", name: "texto", widget: "text" }
+

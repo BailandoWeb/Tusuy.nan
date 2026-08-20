@@ -1,0 +1,22 @@
+{
+  "testimonios": [
+    {
+      "nombre": "María G.",
+      "actividad": "Alumna de chacarera",
+      "valoracion": 5,
+      "texto": "Empecé sin saber nada de folklore y ahora la chacarera ya es parte de mi vida. Agustina transmite la esencia de cada danza con una paciencia y pasión increíbles."
+    },
+    {
+      "nombre": "Festival Iberoamérica, Madrid",
+      "actividad": "Espectáculo contratado",
+      "valoracion": 5,
+      "texto": "Contratamos el espectáculo de folklore argentino para nuestro festival y fue lo más aplaudido de la noche. Profesionalismo total y un show de altísimo nivel."
+    },
+    {
+      "nombre": "Carlos R.",
+      "actividad": "Alumno de malambo",
+      "valoracion": 5,
+      "texto": "Miguel es un maestro del malambo. Su técnica es impecable y su forma de enseñar hace que aprendas rápido y con ganas de más."
+    }
+  ]
+}

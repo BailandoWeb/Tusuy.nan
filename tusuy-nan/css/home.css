@@ -1541,3 +1541,107 @@
     max-width: 760px;   /* más estrecho para que 2 cards no queden perdidas */
   }
 }
+
+/* ════════════════════════════════════════
+   TESTIMONIOS
+════════════════════════════════════════ */
+#testimonios {
+  padding: var(--section-py) var(--px);
+}
+
+.testimonios-vacio {
+  text-align: center;
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+  margin-top: 1.5rem;
+}
+
+.testimonios-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background: rgba(201,168,76,0.08);
+  max-width: 1000px;
+  margin: 0 auto 3rem;
+}
+
+.testimonio-card {
+  background: var(--carbon);
+  padding: 1.8rem 1.6rem;
+  transition: background 0.3s;
+}
+
+.testimonio-card:hover {
+  background: var(--carbon-med);
+}
+
+.testimonio-estrellas {
+  color: var(--oro);
+  font-size: 0.95rem;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.9rem;
+}
+
+.testimonio-texto {
+  font-family: var(--font-italic);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--texto);
+  margin-bottom: 1rem;
+}
+
+.testimonio-autor {
+  font-size: 0.62rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--oro-suave);
+  font-weight: 700;
+}
+
+.testimonio-actividad {
+  font-size: 0.78rem;
+  color: var(--texto-suave);
+  margin-top: 0.2rem;
+}
+
+/* Formulario de reseña: reutiliza .form-grid/.form-field/.btn-submit del formulario de contacto */
+.resena-form-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.resena-form-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 6vw, 2.2rem);
+  font-weight: 700;
+  color: var(--texto);
+  margin-bottom: 0.6rem;
+}
+
+.resena-form-sub {
+  font-size: 0.86rem;
+  font-weight: 300;
+  color: var(--texto-suave);
+  line-height: 1.75;
+  margin-bottom: 2rem;
+}
+
+.resena-form .form-hint {
+  display: block;
+  font-size: 0.68rem;
+  color: var(--texto-fino);
+  margin-top: 0.4rem;
+}
+
+@media (min-width: 700px) {
+  .testimonios-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 960px) {
+  .testimonios-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
