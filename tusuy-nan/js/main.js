@@ -206,6 +206,60 @@ function initHeroScroll() {
   }, { passive: true });
 }
 
+/* ── 8. PRÓXIMO EVENTO — carga dinámica ───────────
+   Lee /data/evento.json y rellena la(s) tarjeta(s)
+   de evento marcadas con atributos data-evento-*.
+   Para cambiar el evento: edita ese archivo JSON
+   (a mano, o desde el panel /admin si está activado).
+   Si "activo" es false, se oculta la sección #evento.
+───────────────────────────────────────────────── */
+async function loadEvento() {
+  const cards = document.querySelectorAll('[data-evento-card]');
+  if (!cards.length) return;
+
+  try {
+    const res = await fetch('/data/evento.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error('No se pudo leer evento.json');
+    const evento = await res.json();
+
+    if (evento.activo === false) {
+      document.querySelectorAll('#evento').forEach(sec => sec.style.display = 'none');
+      return;
+    }
+
+    cards.forEach(card => {
+      const set = (selector, value, attr) => {
+        const el = card.querySelector(selector);
+        if (!el || value == null) return;
+        if (attr) el.setAttribute(attr, value);
+        else el.textContent = value;
+      };
+
+      set('[data-evento-etiqueta]', evento.etiqueta);
+      set('[data-evento-titulo]', evento.titulo);
+      set('[data-evento-fecha]', evento.fecha);
+      set('[data-evento-lugar]', evento.lugar);
+      set('[data-evento-plazas]', evento.plazas);
+      set('[data-evento-desc]', evento.descripcion);
+
+      const linkBtn = card.querySelector('[data-evento-link]');
+      if (linkBtn) {
+        if (evento.linkReserva) linkBtn.setAttribute('href', evento.linkReserva);
+        if (evento.textoReserva) linkBtn.textContent = evento.textoReserva;
+      }
+
+      const flyerImg = card.querySelector('[data-evento-flyer-img]');
+      if (flyerImg && evento.flyer) {
+        flyerImg.src = evento.flyer;
+        flyerImg.closest('.evento-flyer')?.classList.remove('flyer-placeholder');
+      }
+    });
+  } catch (e) {
+    // Si falla la carga, se queda el contenido estático que ya está en el HTML
+    console.warn('No se pudo cargar el próximo evento dinámicamente:', e);
+  }
+}
+
 /* ── INIT ─────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   // Cargar componentes (si existen los placeholders)
@@ -222,4 +276,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroScroll();
   initScrollReveal();
   initForm();
+  loadEvento();
 });

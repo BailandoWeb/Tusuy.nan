@@ -1,0 +1,12 @@
+{
+  "activo": true,
+  "etiqueta": "Espectáculo en vivo",
+  "titulo": "Espectáculo / Concierto de Folklore Argentino",
+  "fecha": "Consulta disponibilidad",
+  "lugar": "Madrid · Por confirmar",
+  "plazas": "Limitadas",
+  "descripcion": "Una noche de chacarera, zamba y malambo auténticos. Vestuario tradicional, músicos en vivo y la energía del folklore argentino en estado puro.",
+  "flyer": "/img/flyer-proximo.jpg",
+  "linkReserva": "#contacto",
+  "textoReserva": "Reservar plaza →"
+}

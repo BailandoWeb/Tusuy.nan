@@ -1,0 +1,26 @@
+backend:
+  name: git-gateway
+  branch: main   # cambia esto si tu rama principal se llama "master"
+
+# Sube las imágenes del evento (flyer) a esta carpeta
+media_folder: "img"
+public_folder: "/img"
+
+collections:
+  - name: "evento"
+    label: "Próximo Evento"
+    files:
+      - file: "data/evento.json"
+        label: "Próximo Evento"
+        name: "evento"
+        fields:
+          - { label: "Mostrar sección de evento", name: "activo", widget: "boolean", default: true }
+          - { label: "Etiqueta (ej. 'Espectáculo en vivo')", name: "etiqueta", widget: "string" }
+          - { label: "Título del evento", name: "titulo", widget: "string" }
+          - { label: "Fecha", name: "fecha", widget: "string" }
+          - { label: "Lugar", name: "lugar", widget: "string" }
+          - { label: "Plazas", name: "plazas", widget: "string" }
+          - { label: "Descripción", name: "descripcion", widget: "text" }
+          - { label: "Flyer del evento", name: "flyer", widget: "image" }
+          - { label: "Link del botón 'Reservar'", name: "linkReserva", widget: "string", default: "#contacto" }
+          - { label: "Texto del botón", name: "textoReserva", widget: "string", default: "Reservar plaza →" }
