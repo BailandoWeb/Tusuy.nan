@@ -11,6 +11,21 @@
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://tusuynan.com/" />
 
+  <!-- Netlify Identity: procesa aquí también los links de confirmación/invitación
+       por si el correo redirige a la home en vez de a /admin (bug conocido) -->
+  <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on('init', user => {
+        if (!user) {
+          window.netlifyIdentity.on('login', () => {
+            document.location.href = '/admin/';
+          });
+        }
+      });
+    }
+  </script>
+
   <!-- Open Graph -->
   <meta property="og:title" content="Tusuy Ñan | Folklore Argentino en Madrid" />
   <meta property="og:description" content="Clases de chacarera, zamba y malambo en Madrid. Espectáculos de folklore argentino para festivales y eventos." />
