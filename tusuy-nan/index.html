@@ -390,7 +390,7 @@
 
   <!-- ══════════════════════════════════════
        EVENTOS — Próximo + Pasados
-       (datos cargados dinámicamente desde /data/evento.json — ver main.js)
+       (datos cargados dinámicamente desde /data/eventos.json — ver main.js)
   ══════════════════════════════════════ -->
   <section id="evento">
     <div class="eventos-wrap">
@@ -402,7 +402,7 @@
 
         <div class="evento-card" data-evento-card>
 
-          <!-- Flyer: se actualiza automáticamente desde /data/evento.json -->
+          <!-- Flyer: se actualiza automáticamente desde /data/eventos.json -->
           <div class="evento-flyer">
             <img
               src="./img/flyer-proximo.jpg"
@@ -457,41 +457,9 @@
         </button>
 
         <div class="pasados-lista" id="pasadosLista" aria-hidden="true">
-          <div class="pasados-grid">
-
-            <div class="pasado-card">
-              <div class="pasado-flyer">
-                <img src="./img/folk toledo.jpg" alt="Espectáculo folklore argentino Toledo 2025" loading="lazy" onerror="this.style.display='none'" />
-              </div>
-              <div class="pasado-info">
-                <div class="pasado-fecha">Diciembre 2025</div>
-                <div class="pasado-nombre">Festival Iberoamérica · Madrid</div>
-                <div class="pasado-desc">Estampa folklórica argentina. Sold out.</div>
-              </div>
-            </div>
-
-            <div class="pasado-card">
-              <div class="pasado-flyer">
-                <img src="./img/berlin.jpg" alt="Gala Latinoamericana Berlín 2025" loading="lazy" onerror="this.style.display='none'" />
-              </div>
-              <div class="pasado-info">
-                <div class="pasado-fecha">Octubre 2025</div>
-                <div class="pasado-nombre">Gala Latinoamericana · Berlín</div>
-                <div class="pasado-desc">Folklore argentino y danzas peruanas.</div>
-              </div>
-            </div>
-
-            <div class="pasado-card">
-              <div class="pasado-flyer">
-                <img src="./img/folk duo.jpg" alt="Peña Folklórica Madrid 2025" loading="lazy" onerror="this.style.display='none'" />
-              </div>
-              <div class="pasado-info">
-                <div class="pasado-fecha">Julio 2025</div>
-                <div class="pasado-nombre">Peña Folklórica · Madrid</div>
-                <div class="pasado-desc">Noche de chacarera y zamba en vivo.</div>
-              </div>
-            </div>
-
+          <div class="pasados-grid" data-pasados-grid>
+            <!-- Las tarjetas de eventos pasados se insertan aquí dinámicamente,
+                 leídas desde /data/eventos.json (los que tengan fecha anterior a hoy) -->
           </div>
         </div>
       </div>

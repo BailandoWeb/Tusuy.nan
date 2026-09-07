@@ -1,0 +1,39 @@
+{
+  "eventos": [
+    {
+      "titulo": "Espectáculo / Concierto de Folklore Argentino",
+      "etiqueta": "Espectáculo en vivo",
+      "fecha": "2026-11-15T20:00:00.000Z",
+      "lugar": "Madrid · Por confirmar",
+      "plazas": "Limitadas",
+      "descripcion": "Una noche de chacarera, zamba y malambo auténticos. Vestuario tradicional, músicos en vivo y la energía del folklore argentino en estado puro.",
+      "flyer": "/img/flyer-proximo.jpg",
+      "linkReserva": "#contacto",
+      "textoReserva": "Reservar plaza →"
+    },
+    {
+      "titulo": "Festival Iberoamérica · Madrid",
+      "etiqueta": "Evento pasado",
+      "fecha": "2025-12-01T20:00:00.000Z",
+      "lugar": "Madrid",
+      "descripcion": "Estampa folklórica argentina. Sold out.",
+      "flyer": "/img/folk toledo.jpg"
+    },
+    {
+      "titulo": "Gala Latinoamericana · Berlín",
+      "etiqueta": "Evento pasado",
+      "fecha": "2025-10-01T20:00:00.000Z",
+      "lugar": "Berlín",
+      "descripcion": "Folklore argentino y danzas peruanas.",
+      "flyer": "/img/berlin.jpg"
+    },
+    {
+      "titulo": "Peña Folklórica · Madrid",
+      "etiqueta": "Evento pasado",
+      "fecha": "2025-07-01T20:00:00.000Z",
+      "lugar": "Madrid",
+      "descripcion": "Noche de chacarera y zamba en vivo.",
+      "flyer": "/img/folk duo.jpg"
+    }
+  ]
+}

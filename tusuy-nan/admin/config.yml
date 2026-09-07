@@ -2,33 +2,40 @@ backend:
   name: git-gateway
   branch: main   # cambia esto si tu rama principal se llama "master"
 
-# Sube las imágenes del evento (flyer) a esta carpeta
-media_folder: "img"
+# IMPORTANTE: la web vive dentro de la carpeta "tusuy-nan/" del repo,
+# no en la raíz. Por eso todas las rutas de abajo empiezan con "tusuy-nan/".
+# (public_folder es distinto: es la URL con la que el navegador pide la
+# imagen una vez publicada, y ahí sí es relativa a la web, por eso es "/img").
+media_folder: "tusuy-nan/img"
 public_folder: "/img"
 
 collections:
-  - name: "evento"
-    label: "Próximo Evento"
+  - name: "eventos"
+    label: "Eventos"
     files:
-      - file: "data/evento.json"
-        label: "Próximo Evento"
-        name: "evento"
+      - file: "tusuy-nan/data/eventos.json"
+        label: "Eventos"
+        name: "eventos"
         fields:
-          - { label: "Mostrar sección de evento", name: "activo", widget: "boolean", default: true }
-          - { label: "Etiqueta (ej. 'Espectáculo en vivo')", name: "etiqueta", widget: "string" }
-          - { label: "Título del evento", name: "titulo", widget: "string" }
-          - { label: "Fecha", name: "fecha", widget: "string" }
-          - { label: "Lugar", name: "lugar", widget: "string" }
-          - { label: "Plazas", name: "plazas", widget: "string" }
-          - { label: "Descripción", name: "descripcion", widget: "text" }
-          - { label: "Flyer del evento", name: "flyer", widget: "image" }
-          - { label: "Link del botón 'Reservar'", name: "linkReserva", widget: "string", default: "#contacto" }
-          - { label: "Texto del botón", name: "textoReserva", widget: "string", default: "Reservar plaza →" }
+          - label: "Lista de eventos"
+            name: "eventos"
+            widget: "list"
+            summary: "{{fields.titulo}} — {{fields.fecha}}"
+            fields:
+              - { label: "Título del evento", name: "titulo", widget: "string" }
+              - { label: "Etiqueta (ej. 'Espectáculo en vivo')", name: "etiqueta", widget: "string", default: "Espectáculo en vivo" }
+              - { label: "Fecha y hora", name: "fecha", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ" }
+              - { label: "Lugar", name: "lugar", widget: "string" }
+              - { label: "Plazas", name: "plazas", widget: "string", default: "Limitadas", required: false }
+              - { label: "Descripción", name: "descripcion", widget: "text" }
+              - { label: "Flyer del evento", name: "flyer", widget: "image", required: false }
+              - { label: "Link del botón 'Reservar'", name: "linkReserva", widget: "string", default: "#contacto" }
+              - { label: "Texto del botón", name: "textoReserva", widget: "string", default: "Reservar plaza →" }
 
   - name: "testimonios"
     label: "Testimonios"
     files:
-      - file: "data/testimonios.json"
+      - file: "tusuy-nan/data/testimonios.json"
         label: "Testimonios publicados"
         name: "testimonios"
         fields:
@@ -41,4 +48,3 @@ collections:
               - { label: "Actividad (ej. 'Clases presenciales')", name: "actividad", widget: "string", required: false }
               - { label: "Valoración (1-5)", name: "valoracion", widget: "number", min: 1, max: 5, default: 5, value_type: "int" }
               - { label: "Texto de la reseña", name: "texto", widget: "text" }
-

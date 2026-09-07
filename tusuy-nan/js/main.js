@@ -206,59 +206,128 @@ function initHeroScroll() {
   }, { passive: true });
 }
 
-/* ── 8. PRÓXIMO EVENTO — carga dinámica ───────────
-   Lee /data/evento.json y rellena la(s) tarjeta(s)
-   de evento marcadas con atributos data-evento-*.
-   Para cambiar el evento: edita ese archivo JSON
-   (a mano, o desde el panel /admin si está activado).
-   Si "activo" es false, se oculta la sección #evento.
+/* ── 8. EVENTOS — carga dinámica ──────────────────
+   Lee /data/eventos.json (una LISTA de eventos) y:
+   - Elige como "próximo evento" el que tenga la fecha
+     futura más cercana a hoy, y rellena la tarjeta.
+   - El resto de eventos con fecha ya pasada se listan
+     en "Eventos pasados" (ordenados del más reciente
+     al más antiguo).
+   Para agregar un evento nuevo: se agrega una entrada
+   más en la lista desde /admin. No hace falta borrar
+   los anteriores, el sistema los reclasifica solo
+   según su fecha.
 ───────────────────────────────────────────────── */
-async function loadEvento() {
+function formatearFecha(iso, modo) {
+  const d = new Date(iso);
+  if (isNaN(d)) return '';
+  if (modo === 'mes-anio') {
+    return d.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })
+      .replace(/^\w/, c => c.toUpperCase());
+  }
+  return d.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+async function loadEventos() {
   const cards = document.querySelectorAll('[data-evento-card]');
-  if (!cards.length) return;
+  const pasadosGrid = document.querySelector('[data-pasados-grid]');
+  const pasadosWrap = document.querySelector('.eventos-pasados');
+  if (!cards.length && !pasadosGrid) return;
 
   try {
-    const res = await fetch('/data/evento.json', { cache: 'no-store' });
-    if (!res.ok) throw new Error('No se pudo leer evento.json');
-    const evento = await res.json();
+    const res = await fetch('/data/eventos.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error('No se pudo leer eventos.json');
+    const data = await res.json();
+    const lista = Array.isArray(data.eventos) ? data.eventos : [];
 
-    if (evento.activo === false) {
-      document.querySelectorAll('#evento').forEach(sec => sec.style.display = 'none');
-      return;
+    const ahora = new Date();
+    const conFecha = lista
+      .filter(e => e.fecha && !isNaN(new Date(e.fecha)))
+      .map(e => ({ ...e, _fecha: new Date(e.fecha) }));
+
+    const futuros = conFecha.filter(e => e._fecha >= ahora).sort((a, b) => a._fecha - b._fecha);
+    const pasados = conFecha.filter(e => e._fecha < ahora).sort((a, b) => b._fecha - a._fecha);
+    const proximo = futuros[0];
+
+    // ── Próximo evento ──
+    if (proximo) {
+      cards.forEach(card => {
+        const set = (selector, value, attr) => {
+          const el = card.querySelector(selector);
+          if (!el || value == null) return;
+          if (attr) el.setAttribute(attr, value);
+          else el.textContent = value;
+        };
+
+        set('[data-evento-etiqueta]', proximo.etiqueta);
+        set('[data-evento-titulo]', proximo.titulo);
+        set('[data-evento-fecha]', formatearFecha(proximo.fecha, 'completa'));
+        set('[data-evento-lugar]', proximo.lugar);
+        set('[data-evento-plazas]', proximo.plazas);
+        set('[data-evento-desc]', proximo.descripcion);
+
+        const linkBtn = card.querySelector('[data-evento-link]');
+        if (linkBtn) {
+          if (proximo.linkReserva) linkBtn.setAttribute('href', proximo.linkReserva);
+          if (proximo.textoReserva) linkBtn.textContent = proximo.textoReserva;
+        }
+
+        const flyerImg = card.querySelector('[data-evento-flyer-img]');
+        if (flyerImg && proximo.flyer) {
+          flyerImg.src = proximo.flyer;
+          flyerImg.closest('.evento-flyer')?.classList.remove('flyer-placeholder');
+        }
+      });
+    } else {
+      // No hay ningún evento futuro cargado: se muestra un aviso genérico
+      cards.forEach(card => {
+        card.querySelector('[data-evento-etiqueta]')?.replaceChildren('Agenda');
+        card.querySelector('[data-evento-titulo]')?.replaceChildren('Sin eventos programados por ahora');
+        card.querySelector('[data-evento-fecha]')?.replaceChildren('—');
+        card.querySelector('[data-evento-desc]')?.replaceChildren('Síguenos para enterarte del próximo espectáculo.');
+      });
     }
 
-    cards.forEach(card => {
-      const set = (selector, value, attr) => {
-        const el = card.querySelector(selector);
-        if (!el || value == null) return;
-        if (attr) el.setAttribute(attr, value);
-        else el.textContent = value;
-      };
-
-      set('[data-evento-etiqueta]', evento.etiqueta);
-      set('[data-evento-titulo]', evento.titulo);
-      set('[data-evento-fecha]', evento.fecha);
-      set('[data-evento-lugar]', evento.lugar);
-      set('[data-evento-plazas]', evento.plazas);
-      set('[data-evento-desc]', evento.descripcion);
-
-      const linkBtn = card.querySelector('[data-evento-link]');
-      if (linkBtn) {
-        if (evento.linkReserva) linkBtn.setAttribute('href', evento.linkReserva);
-        if (evento.textoReserva) linkBtn.textContent = evento.textoReserva;
+    // ── Eventos pasados ──
+    if (pasadosGrid) {
+      if (!pasados.length) {
+        pasadosWrap && (pasadosWrap.style.display = 'none');
+      } else {
+        pasadosGrid.innerHTML = pasados.map(e => `
+          <div class="pasado-card">
+            <div class="pasado-flyer">
+              ${e.flyer ? `<img src="${e.flyer}" alt="${(e.titulo || '').replace(/"/g, '')}" loading="lazy" onerror="this.style.display='none'" />` : ''}
+            </div>
+            <div class="pasado-info">
+              <div class="pasado-fecha">${formatearFecha(e.fecha, 'mes-anio')}</div>
+              <div class="pasado-nombre">${(e.titulo || '').replace(/</g, '&lt;')}</div>
+              <div class="pasado-desc">${(e.descripcion || '').replace(/</g, '&lt;')}</div>
+            </div>
+          </div>
+        `).join('');
       }
-
-      const flyerImg = card.querySelector('[data-evento-flyer-img]');
-      if (flyerImg && evento.flyer) {
-        flyerImg.src = evento.flyer;
-        flyerImg.closest('.evento-flyer')?.classList.remove('flyer-placeholder');
-      }
-    });
+    }
   } catch (e) {
     // Si falla la carga, se queda el contenido estático que ya está en el HTML
-    console.warn('No se pudo cargar el próximo evento dinámicamente:', e);
+    console.warn('No se pudieron cargar los eventos dinámicamente:', e);
   }
 }
+
+/* ── 8b. TOGGLE "Ver eventos pasados" ─────────────── */
+function initPasadosToggle() {
+  const btn = document.getElementById('pasadosToggle');
+  const lista = document.getElementById('pasadosLista');
+  if (!btn || !lista) return;
+
+  btn.addEventListener('click', () => {
+    const abierto = lista.classList.toggle('open');
+    btn.setAttribute('aria-expanded', abierto ? 'true' : 'false');
+    lista.setAttribute('aria-hidden', abierto ? 'false' : 'true');
+    btn.querySelector('.pasados-toggle-label').textContent =
+      abierto ? 'Ocultar eventos pasados' : 'Ver eventos pasados';
+  });
+}
+
 
 /* ── 9. TESTIMONIOS — carga dinámica ──────────────
    Lee /data/testimonios.json y pinta las tarjetas
@@ -320,6 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroScroll();
   initScrollReveal();
   initForm();
-  loadEvento();
+  loadEventos();
+  initPasadosToggle();
   loadTestimonios();
 });
