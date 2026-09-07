@@ -187,6 +187,24 @@
   overflow: hidden;
 }
 
+/* Imagen de fondo: cuando tengas la foto, súbela como /img/folklore-fondo.jpg
+   (o cambia el nombre del archivo acá abajo por el que uses).
+   Mientras el archivo no exista, esta capa simplemente no se ve —
+   no rompe nada ni genera errores en la web. */
+#folklore::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/img/folklore-fondo.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(70%) sepia(25%) brightness(0.75);
+  opacity: 0.16;
+  mix-blend-mode: luminosity;
+  z-index: 0;
+  pointer-events: none;
+}
+
 #folklore::before {
   content: '✦';
   position: absolute;
@@ -197,6 +215,7 @@
   color: rgba(201,168,76,0.025);
   pointer-events: none;
   line-height: 1;
+  z-index: 0;
 }
 
 .folklore-inner {
@@ -460,7 +479,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('../img/agus-miguel-panuelo.jpg');
+  background-image: url('../img/folk duo.jpg');
   background-size: cover;
   background-position: center top;
   filter: grayscale(100%) contrast(1.05) brightness(0.35);
@@ -1142,12 +1161,33 @@
   padding: var(--section-py) var(--px);
   background: var(--carbon-med);
   border-top: 1px solid rgba(201,168,76,0.07);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Imagen de fondo: sube el archivo como /img/bandera-argentina-gigante.jpg */
+#contacto::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/img/bandera-argentina-gigante.jpg');
+  background-size: cover;
+  background-position: center;
+  /* Grayscale + sepia tiñe la imagen con los tonos dorado/carbón del sitio
+     en vez de sus colores originales, y la opacidad baja evita que resalte */
+  filter: grayscale(70%) sepia(25%) brightness(0.75);
+  opacity: 0.16;
+  mix-blend-mode: luminosity;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .contacto-inner {
   max-width: 820px;
   margin: 0 auto;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .contacto-title {
