@@ -1,39 +1,26 @@
 {
   "eventos": [
     {
-      "titulo": "Espectáculo / Concierto de Folklore Argentino",
-      "etiqueta": "Espectáculo en vivo",
-      "fecha": "2026-11-15T20:00:00.000Z",
-      "lugar": "Madrid · Por confirmar",
+      "flyer": "/img/chatgpt-image-6-sept-2026-22_56_54.png",
       "plazas": "Limitadas",
-      "descripcion": "Una noche de chacarera, zamba y malambo auténticos. Vestuario tradicional, músicos en vivo y la energía del folklore argentino en estado puro.",
-      "flyer": "/img/flyer-proximo.jpg",
-      "linkReserva": "#contacto",
-      "textoReserva": "Reservar plaza →"
+      "descripcion": "Clase abierta por el inicio de de la temporada 2026-2027,  el día Viernes 11/09. Ven a conocernos y pasar una linda noche bailando, divirtiéndonos y conociendo el folklore Argentino en Madrid. No hay limite de edad, tampoco importa tu nivel de conocimiento, será increíble conocerte. Unete a este linda comunidad, te esperamos.\n",
+      "lugar": "Calle Dr. Piga 5 B",
+      "etiqueta": "Clase abierta",
+      "textoReserva": "Inscripciones  →",
+      "titulo": "Inicio de Clases 2026-2027",
+      "fecha": "2026-09-11T19:00:00+02:00",
+      "linkReserva": "https://forms.gle/KfJsNXjfvVHeAueQ9"
     },
     {
-      "titulo": "Festival Iberoamérica · Madrid",
-      "etiqueta": "Evento pasado",
-      "fecha": "2025-12-01T20:00:00.000Z",
+      "flyer": "/img/pena-tusuy.jpg",
+      "plazas": "200",
+      "descripcion": "Una tarde increíble trayendo el formato de las peñas Argentinas en Madrid. Nos acompañaron muchos amigos artistas, hubo: músicos, cantantes, otros grupos de danza. Lo que genero un ambiente increíble y familiar. ",
       "lugar": "Madrid",
-      "descripcion": "Estampa folklórica argentina. Sold out.",
-      "flyer": "/img/folk toledo.jpg"
-    },
-    {
-      "titulo": "Gala Latinoamericana · Berlín",
       "etiqueta": "Evento pasado",
-      "fecha": "2025-10-01T20:00:00.000Z",
-      "lugar": "Berlín",
-      "descripcion": "Folklore argentino y danzas peruanas.",
-      "flyer": "/img/berlin.jpg"
-    },
-    {
-      "titulo": "Peña Folklórica · Madrid",
-      "etiqueta": "Evento pasado",
-      "fecha": "2025-07-01T20:00:00.000Z",
-      "lugar": "Madrid",
-      "descripcion": "Noche de chacarera y zamba en vivo.",
-      "flyer": "/img/folk duo.jpg"
+      "textoReserva": "Así fue nuestra Peña",
+      "titulo": "Peña Aniversario · Madrid",
+      "fecha": "2025-05-25T15:00:00+02:00",
+      "linkReserva": "https://www.instagram.com/p/DaA8MChiOnI/?utm_source=ig_web_button_share_sheet&stkn=MzRlODBiNWFlZA=="
     }
   ]
 }
