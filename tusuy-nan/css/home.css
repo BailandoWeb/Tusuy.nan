@@ -1170,7 +1170,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('/img/bandera-argentina-gigante.jpg');
+  background-image: url('/img/bandera-argentina-gigante.jpeg');
   background-size: cover;
   background-position: center;
   /* Grayscale + sepia tiñe la imagen con los tonos dorado/carbón del sitio
