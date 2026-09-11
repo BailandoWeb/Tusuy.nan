@@ -128,29 +128,64 @@ function markActiveNav() {
 }
 
 /* ── 6. FORM BÁSICO ──────────────────────────── */
+/* ── 6. FORMULARIOS (Netlify Forms) ───────────────
+   Envía TODOS los formularios data-netlify de la
+   página (contacto, resena, y los que se agreguen)
+   por AJAX real a Netlify, sin recargar la página.
+   Antes esto solo tomaba el PRIMER <form> del HTML
+   con document.querySelector('form') y simulaba el
+   envío con un setTimeout — nunca llegaba nada a
+   Netlify. Corregido para recorrer todos los forms.
+───────────────────────────────────────────────── */
+function encodeFormData(form) {
+  const data = new FormData(form);
+  return new URLSearchParams(data).toString();
+}
+
 function initForm() {
-  const form = document.querySelector('form');
-  if (!form) return;
+  const forms = document.querySelectorAll('form[data-netlify]');
+  if (!forms.length) return;
 
-  form.addEventListener('submit', async e => {
-    e.preventDefault();
-    const btn = form.querySelector('.btn-submit');
-    const original = btn.textContent;
-    btn.textContent = 'Enviando...';
-    btn.disabled = true;
+  forms.forEach(form => {
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const btn = form.querySelector('.btn-submit');
+      const original = btn ? btn.textContent : '';
+      if (btn) {
+        btn.textContent = 'Enviando...';
+        btn.disabled = true;
+        btn.style.background = '';
+      }
 
-    // Aquí conectas tu backend / Formspree / Netlify Forms
-    // Por ahora simula el envío
-    await new Promise(r => setTimeout(r, 1200));
+      try {
+        const res = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: encodeFormData(form),
+        });
+        if (!res.ok) throw new Error('Respuesta de Netlify no OK: ' + res.status);
 
-    btn.textContent = '¡Mensaje enviado! ✓';
-    btn.style.background = '#2a6e3a';
-    setTimeout(() => {
-      btn.textContent = original;
-      btn.style.background = '';
-      btn.disabled = false;
-      form.reset();
-    }, 3000);
+        if (btn) {
+          btn.textContent = '¡Enviado! ✓';
+          btn.style.background = '#2a6e3a';
+        }
+        form.reset();
+        setTimeout(() => {
+          if (btn) {
+            btn.textContent = original;
+            btn.style.background = '';
+            btn.disabled = false;
+          }
+        }, 3000);
+      } catch (err) {
+        console.warn('Error al enviar el formulario:', err);
+        if (btn) {
+          btn.textContent = 'Error, intenta de nuevo';
+          btn.disabled = false;
+        }
+        setTimeout(() => { if (btn) btn.textContent = original; }, 3000);
+      }
+    });
   });
 }
 
@@ -378,6 +413,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Cargar componentes (si existen los placeholders)
   loadComponent('navbar-placeholder', '/components/navbar.html');
   loadComponent('footer-placeholder', '/components/footer.html');
+  loadComponent('whatsapp-placeholder', '/components/whatsapp-float.html');
 
   // Si el navbar ya está en el HTML (no placeholder), inicializar directo
   if (document.getElementById('navToggle')) {
